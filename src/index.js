@@ -40,7 +40,6 @@ function addBreeds(breeds){
     // create and render li's with breed info
     let li = document.createElement('li')
     li.textContent = breedList[dog]
-    // console.log(li);
     li.style.color = 'black'
     document.querySelector('#dog-breeds').appendChild(li)
    
@@ -56,11 +55,26 @@ function addBreeds(breeds){
   }
 }
 
+  
+document.querySelector("#breed-dropdown").addEventListener("change", (e) => {
+let selected = e.target.value
+
+Array.from(document.querySelectorAll("#dog-breeds li")).map((breed) => {
+
+  if(breed.innerText.charAt(0) === selected){
+    breed.style.display = ""
+  }else{
+    breed.style.display = "none"
+  }
+})
+})
+
+
 
   fetchDogs();
   fetchBreeds();
 
 
 
-});
+})
 
